@@ -27,7 +27,7 @@ window.addEventListener('popstate', function (event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     initializesCodeEditors();
-    loadHomeScript();
+    if (window.location.pathname === '/') loadHomeScript();
 });
 
 function loadHomeScript() {
