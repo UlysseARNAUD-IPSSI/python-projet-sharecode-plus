@@ -9,7 +9,7 @@
             {% for entry in last_added %}
                 <article data-id="{{ entry["uid"] }}" data-mode="edit" onclick="viewActivity(this)">
                     <h3>{{ entry["uid"] }}</h3>
-                    {% if entry["langage"] %} <small>{{ entry["langage"] }}</small> {% endif %}
+                    {% if entry["language"] %} <small>{{ entry["language"] }}</small> {% endif %}
                 </article>
             {% endfor %}
         </section>

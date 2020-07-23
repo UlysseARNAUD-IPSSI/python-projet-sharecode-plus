@@ -54,9 +54,6 @@ def get_last_entries_from_files(n=10, nlines=10):
             break
         if e.name.startswith('.'):
             continue
-        with open('data/{}'.format(e.name)) as fd:
-            code = ''.join((fd.readline() for i in range(nlines)))
-            if fd.readline():
-                code += '\n...'
-        d.append({'uid': e.name, 'code': code})
+        code = read_doc_as_file(e.name)
+        d.append(code)
     return d
