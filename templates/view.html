@@ -1,0 +1,12 @@
+{% include 'layouts/header.html' %}
+
+	   <form>
+		 <p align=left>URL: <input name='url' value="{{ url }}">
+	   </form>
+	   <p align=left>
+		   <pre>{{ code }}</pre>
+	   </p>
+	   <a data-mode="edit" data-id="{{ uid }}" onclick="viewActivity(this)">Edit</a></br>
+	   <a data-mode="create" onclick="viewActivity(this)">Create New</a>
+
+{% include 'layouts/footer.html' %}

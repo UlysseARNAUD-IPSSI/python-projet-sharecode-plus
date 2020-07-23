@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: gray;
+    height: 3.5rem;
+}
+
+header > aside#logo{
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header > nav {
+    padding: 0 1rem;
+}

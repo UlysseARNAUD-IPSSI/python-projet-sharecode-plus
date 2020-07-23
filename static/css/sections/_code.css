@@ -1,0 +1,9 @@
+section#code {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+section#code > .code-editor {
+    flex-grow: 1;
+}

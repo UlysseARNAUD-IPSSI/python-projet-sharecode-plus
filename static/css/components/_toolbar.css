@@ -1,0 +1,16 @@
+nav.toolbar {
+    background: lightgray;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+nav.toolbar > a {
+    padding: .1rem 1rem;
+    cursor: pointer;
+}
+
+nav.toolbar > a:hover {
+    background: #bbb;
+}

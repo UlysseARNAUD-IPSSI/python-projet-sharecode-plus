@@ -1,0 +1,14 @@
+{
+  "name": "python-projet-sharecode-plus",
+  "version": "1.0.0",
+  "description": "Extension de Share Code : meta données, log utilisateurs, SQL, coloration de code",
+  "main": "static/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "codemirror": "^5.56.0"
+  }
+}

@@ -1,0 +1,41 @@
+{% include 'layouts/header.html' %}
+
+<section id="code" data-uid="{{ uid }}">
+
+    <nav class="toolbar">
+        <a onclick="saveCode(this)">Sauvegarder</a>
+        <a onclick="saveAndViewCode(this)">Aperçu</a>
+    </nav>
+
+    <div class="code-editor">
+        <form method="POST" action="/publish" enctype="multipart/form-data">
+            <input type="hidden" name="uid" value="{{ uid }}">
+            <input type="hidden" name="language" value="{{ language }}">
+            <textarea name="code" rows=20 cols=100>{{ code }}</textarea>
+        </form>
+    </div>
+
+    <!--{% if uid %}
+    <a data-mode="view" data-id="{{ uid }}" onclick="viewActivity(this)" style="cursor:pointer">View only code:
+        {{ uid }}</a>
+    <p align=left>URL: <input name='url' value="{{ url }}">
+{% endif %}
+<form method="POST" action="/publish" enctypwe="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                <textarea name="code" rows=20 cols=100>{{ code }}</textarea><br/>
+            </td>
+            <td valign=top>
+                <input type="hidden" name="uid" value="{{ uid }}">
+                <button type="submit" name="submit" value="edit">Save</button>
+                <br/>
+                <button type="submit" name="submit" value="view">Save &amp; View</button>
+            </td>
+        </tr>
+    </table>
+</form>-->
+
+</section>
+
+{% include 'layouts/footer.html' %}

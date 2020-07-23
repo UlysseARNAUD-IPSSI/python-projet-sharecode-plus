@@ -1,0 +1,29 @@
+:root {
+    --last-added-article-size: 20vw;
+}
+
+section#last-added{
+}
+
+section#last-added > hgroup{
+}
+
+section#last-added > section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--last-added-article-size), 16rem));
+    grid-gap: .1cm;
+    grid-auto-rows: 1fr;
+}
+
+section#last-added > section > article{
+    background: darkgray;
+    cursor: pointer;
+}
+
+section#last-added > section > article:before{
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    padding-bottom: calc(9 / 16 * var(--last-added-article-size));
+}
