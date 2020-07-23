@@ -1,4 +1,5 @@
 import contientEditor from "./_contientEditor.js";
+import enleverEditor from "./_enleverEditor.js";
 
 function initializesCodeEditors() {
 
@@ -9,10 +10,6 @@ function initializesCodeEditors() {
         cursor++
     ) {
         const element = elements[cursor];
-        const editor = CodeMirror.fromTextArea(element, {
-            lineNumbers: true
-        });
-
         const codeSection = element.closest('section#code');
         let {uid, language} = codeSection.dataset;
 
@@ -22,9 +19,16 @@ function initializesCodeEditors() {
             language = defaultLanguage;
         }
 
-        if (false === contientEditor(uid)) {
-            editors.push({uid, editor, language});
+        const editor = CodeMirror.fromTextArea(element, {
+            lineNumbers: true,
+            mode: language,
+            theme: 'dracula'
+        });
+
+        if (true === contientEditor(uid)) {
+            enleverEditor(uid);
         }
+        editors.push({uid, editor, language});
 
     }
 

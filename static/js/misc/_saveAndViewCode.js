@@ -6,18 +6,16 @@ function saveAndViewCode(element) {
     const codeSection = element.closest('section#code');
     const {uid} = codeSection.dataset;
 
-    const form = codeSection.querySelector('form');
-
     if (contientEditor(uid)) {
         const editor = obtenirEditor(uid);
-        const code = editor.editor.getValue();
+        const content = editor.editor.getValue();
         const language = editor.language || 'text';
 
-        console.log({editor, uid, code, language});
+        console.log({editor, uid, content, language});
 
-        const formData = new FormData(form);
+        const formData = new FormData();
         formData.set('uid', uid);
-        formData.set('code', code);
+        formData.set('content', content);
         formData.set('language', language);
 
         console.log({formData});

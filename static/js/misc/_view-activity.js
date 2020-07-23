@@ -10,6 +10,7 @@ function viewActivity(element) {
         urlChange: true,
         callback: function () {
             initializesCodeEditors();
+            loadEditScript();
         }
     });
 

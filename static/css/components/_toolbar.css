@@ -8,6 +8,7 @@ nav.toolbar {
 
 nav.toolbar > a, nav.toolbar > div {
     padding: .1rem 1rem;
+    user-select: none;
 }
 
 nav.toolbar > a:hover {

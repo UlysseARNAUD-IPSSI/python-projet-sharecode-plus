@@ -4,6 +4,7 @@ import saveAndViewCode from './misc/_saveAndViewCode.js';
 import view from './misc/_view.js';
 import viewActivity from './misc/_view-activity.js';
 import initializesCodeEditors from './misc/_initializesCodeEditors.js';
+import modifierLangageDansEditor from "./misc/_modifierLangageDansEditor.js";
 
 
 /*
@@ -27,7 +28,8 @@ window.addEventListener('popstate', function (event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     initializesCodeEditors();
-    if (window.location.pathname === '/') loadHomeScript();
+    if ('/' === window.location.pathname) loadHomeScript();
+    if (/^\/edit\//.test(window.location.pathname)) loadEditScript();
 });
 
 function loadHomeScript() {
@@ -38,6 +40,16 @@ function loadHomeScript() {
     });
 
     view.display();
+}
+
+function loadEditScript() {
+    const languagesSelect = document.querySelector('select#language');
+    languagesSelect.addEventListener('change', function changeLanguage(event) {
+        const language = event.target.value;
+        const codeSection = languagesSelect.closest('section#code');
+        const {uid} = codeSection.dataset;
+        modifierLangageDansEditor(uid, language);
+    })
 }
 
 window.loadHomeScript = loadHomeScript;

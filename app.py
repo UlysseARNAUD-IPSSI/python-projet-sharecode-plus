@@ -7,7 +7,7 @@ from model import save_doc_as_file, \
     read_doc_as_file, \
     get_last_entries_from_files
 
-import Code
+from Code import Code
 
 app = Flask(__name__)
 
@@ -45,11 +45,13 @@ def edit(uid):
 
 @app.route('/publish', methods=['POST'])
 def publish():
-    code = request.form.get('code')
+    content = request.form.get('content')
     uid = request.form.get('uid')
     language = request.form.get('language')
 
-    save_doc_as_file(uid, code)
+    code = Code(uid=uid, content=content, language=language)
+
+    save_doc_as_file(code)
     return jsonify({
         'ok': True
     })

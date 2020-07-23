@@ -8,18 +8,14 @@
         <div>
             <select name="language" id="language">
                 {% for language in languages %}
-                    <option value="{{ language }}">{{ language }}</option>
+                    <option value="{{ language }}" {% if language == code.language %}selected{% endif %}>{{ language }}</option>
                 {% endfor %}
             </select>
         </div>
     </nav>
 
-    <div class="code-editor">
-        <form method="POST" action="/publish" enctype="multipart/form-data">
-            <input type="hidden" name="uid" value="{{ uid }}">
-            <input type="hidden" name="language" value="{{ language }}">
-            <textarea name="code" rows=20 cols=100>{{ code }}</textarea>
-        </form>
+    <div class="code-editor" data-language="{{ code.language }}">
+        <textarea name="content" rows=20 cols=100>{{ code.content }}</textarea>
     </div>
 
     <!--{% if uid %}
