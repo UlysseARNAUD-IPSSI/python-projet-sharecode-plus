@@ -6,11 +6,11 @@ nav.toolbar {
     padding: 0;
 }
 
-nav.toolbar > a {
+nav.toolbar > a, nav.toolbar > div {
     padding: .1rem 1rem;
-    cursor: pointer;
 }
 
 nav.toolbar > a:hover {
     background: #bbb;
+    cursor: pointer;
 }

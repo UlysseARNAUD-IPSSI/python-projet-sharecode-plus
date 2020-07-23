@@ -5,6 +5,13 @@
     <nav class="toolbar">
         <a onclick="saveCode(this)">Sauvegarder</a>
         <a onclick="saveAndViewCode(this)">Aperçu</a>
+        <div>
+            <select name="language" id="language">
+                {% for language in languages %}
+                    <option value="{{ language }}">{{ language }}</option>
+                {% endfor %}
+            </select>
+        </div>
     </nav>
 
     <div class="code-editor">

@@ -6,6 +6,6 @@ body {
 
 section#page {
     flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    display: flex;
+    flex-direction: column;
 }

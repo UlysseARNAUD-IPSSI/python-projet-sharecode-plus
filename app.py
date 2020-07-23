@@ -12,6 +12,15 @@ import Code
 app = Flask(__name__)
 
 
+languages = [
+    'text',
+    'python',
+    'html',
+    'css',
+    'javascript'
+]
+
+
 @app.route('/')
 def index():
     # d = { 'last_added':[ { 'uid':'testuid', 'code':'testcode' } ] }
@@ -29,7 +38,7 @@ def edit(uid):
     code = read_doc_as_file(uid)
     if code is None:
         return render_template('error.html', uid=uid)
-    d = dict(uid=uid, code=code,
+    d = dict(uid=uid, code=code, languages=languages,
              url=f"{request.host_url}view/{uid}")
     return render_template('edit.html', **d)
 
@@ -51,7 +60,7 @@ def view(uid):
     code = read_doc_as_file(uid)
     if code is None:
         return render_template('error.html', uid=uid)
-    d = dict(uid=uid, code=code,
+    d = dict(uid=uid, code=code, languages=languages,
              url="{}view/{}".format(request.host_url, uid))
     return render_template('view.html', **d)
 
