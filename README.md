@@ -100,6 +100,8 @@ langage (celui enregistré en base de données).
 
 Pygments n'a pas été pris en compte. A la place, une librairie JS a été utilisé qui est CodeMirror.
 
+Je n'ai pas réussi à implémenter la coloritation syntaxique (malgré un début de système dont on récupère le mime en fonction du langage), cependant en utilisant la librarie CodeMirror, nous pouvons ajouté des addons comme la recherche de mot (comme dans un ide) dans l'éditeur de code.
+
 ## Partie optionnelle
 
 Enoncé :

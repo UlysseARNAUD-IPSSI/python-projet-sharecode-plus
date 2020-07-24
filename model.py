@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+"""
+Imports nécessaires
+"""
+
 import ast
 import json
 from string import ascii_letters, digits
@@ -10,6 +15,10 @@ import os
 from Code import Code
 
 
+"""
+Fonctions utilisées
+"""
+
 def create_uid(n=9):
     '''Génère une chaîne de caractères alétoires de longueur n
    en évitant 0, O, I, l pour être sympa.'''
@@ -17,6 +26,11 @@ def create_uid(n=9):
             if c not in '0OIl']
     return ''.join((choice(chrs) for i in range(n)))
 
+
+
+"""
+Sauvegarde du code dans un fichier
+"""
 
 def save_doc_as_file(code=Code()):
     '''Crée/Enregistre le document sous la forme d'un fichier
@@ -32,6 +46,10 @@ def save_doc_as_file(code=Code()):
     return uid
 
 
+"""
+Récupération d'un code à partir d'un fichier
+"""
+
 def read_doc_as_file(uid):
     '''Lit le document data/uid'''
     try:
@@ -42,6 +60,9 @@ def read_doc_as_file(uid):
     except FileNotFoundError:
         return None
 
+"""
+Récupération des n derniers codes
+"""
 
 def get_last_entries_from_files(n=10, nlines=10):
     entries = os.scandir('data')
