@@ -5,6 +5,7 @@ function enleverEditor(uid) {
         cursor++
     ) {
         const editor = editors[cursor];
+        console.log({uid});
         if (uid === editor.uid) {
             let editors = window.editors;
             editors.splice(cursor, 1)

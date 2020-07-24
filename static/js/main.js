@@ -53,3 +53,4 @@ function loadEditScript() {
 }
 
 window.loadHomeScript = loadHomeScript;
+window.loadEditScript = loadEditScript;
