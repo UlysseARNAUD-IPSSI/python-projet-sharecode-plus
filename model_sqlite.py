@@ -1,7 +1,8 @@
 import sqlite3
 
-from Code import Code
-
+from itertools import chain
+from random import choice
+from string import ascii_letters, digits
 
 def createTables():
     connection = sqlite3.connect('database/sharecode-plus.db')
@@ -23,12 +24,11 @@ def createCode():
     connection = sqlite3.connect('database/sharecode-plus.db')
     cursor = connection.cursor()
 
+    uid = create_uid()
+
     cursor.execute('''
-        INSERT INTO codes DEFAULT VALUES
-    ''')
-
-
-    uid = cursor.lastrowid
+        INSERT INTO codes (uid) VALUES (?)
+    ''', [uid])
 
     connection.commit()
     connection.close()
@@ -42,16 +42,13 @@ def getCode(uid):
 
     c.execute('''
         SELECT
-            uid,
             language,
             content
         FROM codes
         WHERE uid = ?
-    ''', uid)
+    ''', [uid])
 
     result = c.fetchone()
-
-    print(result)
 
     conn.commit()
     conn.close()
@@ -82,7 +79,7 @@ def getAllCode():
     return result
 
 
-def updateCode(uid, code, language):
+def updateCode(uid, content, language):
     conn = sqlite3.connect('database/sharecode-plus.db')
     c = conn.cursor()
 
@@ -93,7 +90,7 @@ def updateCode(uid, code, language):
             language = ?,
             updated_at = CURRENT_TIMESTAMP
         WHERE uid = ?
-    ''', (code, language, uid))
+    ''', (content, language, uid))
 
     conn.commit()
     conn.close()
@@ -105,10 +102,12 @@ def createEdition(ip, user_agent):
     conn = sqlite3.connect('database/sharecode-plus.db')
     c = conn.cursor()
 
+    uid = create_uid()
+
     c.execute('''
-        INSERT INTO editions
-        VALUES(?,?)
-    ''', (ip, user_agent))
+        INSERT INTO editions (uid, ip, user_agent)
+        VALUES(?,?,?)
+    ''', [uid, ip, user_agent])
 
     uid = c.lastrowid
 
@@ -132,3 +131,10 @@ def getEdition():
     conn.close()
 
     return result
+
+def create_uid(n=9):
+    '''Génère une chaîne de caractères alétoires de longueur n
+   en évitant 0, O, I, l pour être sympa.'''
+    chrs = [c for c in chain(ascii_letters, digits)
+            if c not in '0OIl']
+    return ''.join((choice(chrs) for i in range(n)))

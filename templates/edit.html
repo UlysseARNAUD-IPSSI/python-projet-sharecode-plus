@@ -7,37 +7,17 @@
         <a onclick="saveAndViewCode(this)">Aperçu</a>
         <div>
             <select name="language" id="language">
-                {% for language in languages %}
-                    <option value="{{ language }}" {% if language == code.language %}selected{% endif %}>{{ language }}</option>
+                {% for language, value in languages.items() %}
+                    <option value="{{ language }}" {% if language == code[0] %}selected{% endif %}>{{ language }}</option>
                 {% endfor %}
             </select>
         </div>
     </nav>
 
-    <div class="code-editor" data-language="{{ code.language }}">
-        <textarea name="content" rows=20 cols=100>{{ code.content }}</textarea>
+    <div class="code-editor" data-language="{{ code[0] }}">
+        <input type="hidden" name="mimes" value="{{ languages }}">
+        <textarea name="content" rows=20 cols=100>{{ code[1] }}</textarea>
     </div>
-
-    <!--{% if uid %}
-    <a data-mode="view" data-id="{{ uid }}" onclick="viewActivity(this)" style="cursor:pointer">View only code:
-        {{ uid }}</a>
-    <p align=left>URL: <input name='url' value="{{ url }}">
-{% endif %}
-<form method="POST" action="/publish" enctypwe="multipart/form-data">
-    <table>
-        <tr>
-            <td>
-                <textarea name="code" rows=20 cols=100>{{ code }}</textarea><br/>
-            </td>
-            <td valign=top>
-                <input type="hidden" name="uid" value="{{ uid }}">
-                <button type="submit" name="submit" value="edit">Save</button>
-                <br/>
-                <button type="submit" name="submit" value="view">Save &amp; View</button>
-            </td>
-        </tr>
-    </table>
-</form>-->
 
 </section>
 

@@ -1,8 +1,8 @@
 
 CREATE TABLE IF NOT EXISTS `codes`(
-    `uid` INTEGER PRIMARY KEY AUTOINCREMENT,
+    `uid` VARCHAR PRIMARY KEY,
     `content` TEXT NOT NULL DEFAULT '# Write your code here...',
-    `language` VARCHAR(16) NOT NULL DEFAULT 'text',
+    `language` VARCHAR(16) NOT NULL DEFAULT 'Texte',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP
 );

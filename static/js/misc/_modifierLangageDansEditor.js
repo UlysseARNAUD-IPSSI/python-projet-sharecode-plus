@@ -1,4 +1,8 @@
 function modifierLangageDansEditor(uid, language) {
+    let languages = document.querySelector('input[name="mimes"]');
+    languages.value = languages.value.replace(/'/g, '"');
+    languages = JSON.parse(languages.value);
+
     for (
         let cursor = 0, cursorMax = editors.length;
         cursor < cursorMax;
@@ -7,7 +11,7 @@ function modifierLangageDansEditor(uid, language) {
         const editor = editors[cursor];
         if (uid === editor.uid) {
             window.editors[cursor].language = language;
-            window.editors[cursor].editor.setOption('mode', language);
+            window.editors[cursor].editor.setOption('mode', languages[language]);
         }
     }
     return false;

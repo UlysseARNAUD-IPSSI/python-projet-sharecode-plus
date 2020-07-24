@@ -1,12 +1,19 @@
 {% include 'layouts/header.html' %}
 
-	   <form>
-		 <p align=left>URL: <input name='url' value="{{ url }}">
-	   </form>
-	   <p align=left>
-		   <pre>{{ code }}</pre>
-	   </p>
-	   <a data-mode="edit" data-id="{{ uid }}" onclick="viewActivity(this)">Edit</a></br>
-	   <a data-mode="create" onclick="viewActivity(this)">Create New</a>
+        <section id="code" data-uid="{{ uid }}">
+
+            <nav class="toolbar">
+                <a data-mode="edit" data-id="{{ uid }}" onclick="viewActivity(this)">Edit</a></br>
+                <div>
+                    <input name='url' value="{{ url }}" style="max-width:14rem;width:100%">
+                </div>
+            </nav>
+
+            <div class="code-editor" data-language="{{ code[0] }}">
+                <textarea name="content" rows=20 cols=100>{{ code[1] }}</textarea>
+            </div>
+
+        </section>
+
 
 {% include 'layouts/footer.html' %}

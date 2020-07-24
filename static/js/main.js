@@ -27,16 +27,15 @@ window.addEventListener('popstate', function (event) {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-    initializesCodeEditors();
-    if ('/' === window.location.pathname) loadHomeScript();
-    if (/^\/edit\//.test(window.location.pathname)) loadEditScript();
+    initializesPage();
 });
 
 function loadHomeScript() {
     const view = new View({
         url: '/_partials/last-added',
         urlChange: false,
-        callback: function () {}
+        callback: function () {
+        }
     });
 
     view.display();
@@ -49,8 +48,18 @@ function loadEditScript() {
         const codeSection = languagesSelect.closest('section#code');
         const {uid} = codeSection.dataset;
         modifierLangageDansEditor(uid, language);
-    })
+        const saveButton = document.querySelector('.toolbar a:first-child');
+        saveButton.click();
+        window.location.reload(true);
+        /*languagesSelect.querySelector('option[selected]').removeAttribute('selected');
+        languagesSelect.options[languagesSelect.selectedIndex].setAttribute('selected', true);*/
+    });
 }
 
-window.loadHomeScript = loadHomeScript;
-window.loadEditScript = loadEditScript;
+function initializesPage() {
+    initializesCodeEditors();
+    if ('/' === window.location.pathname) loadHomeScript();
+    if (/^\/edit\//.test(window.location.pathname)) loadEditScript();
+}
+
+window.initializesPage = initializesPage;

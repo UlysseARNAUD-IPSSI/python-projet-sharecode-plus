@@ -1,0 +1,11 @@
+{% include 'layouts/header.html' %}
+
+<ul>
+    {% if data %}
+        {% for row in data %}
+            <li>{{ row[0] }} | {{ row[1] }} | {{ row[2] }}| {{ row[3] }}</li>
+        {% endfor %}
+    {% endif %}
+</ul>
+
+{% include 'layouts/footer.html' %}

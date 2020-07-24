@@ -42,12 +42,14 @@ class View {
             const pageSection = element.parentElement.querySelector('section#page');
             page.innerHTML = pageSection.innerHTML;
             page.setAttribute('data-view', viewInstance.url);
-        }).then(function () {
+            return page;
+        }).then(function (page) {
             window.scrollTo(0, 0);
             let isAlreadyPathname = viewInstance.url === window.location.pathname;
             if (false === isAlreadyPathname && true === viewInstance.urlChange) history.pushState({}, document.title, viewInstance.url);
-        }).then(function () {
-            viewInstance.callback();
+            return page;
+        }).then(function (page) {
+            viewInstance.callback(page);
         });
     }
 }

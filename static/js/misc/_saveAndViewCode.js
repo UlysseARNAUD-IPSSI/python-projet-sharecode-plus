@@ -6,10 +6,12 @@ function saveAndViewCode(element) {
     const codeSection = element.closest('section#code');
     const {uid} = codeSection.dataset;
 
+    const languagesSelect = codeSection.querySelector('select#language');
+
     if (contientEditor(uid)) {
         const editor = obtenirEditor(uid);
         const content = editor.editor.getValue();
-        const language = editor.language || 'text';
+        const language = languagesSelect.options[languagesSelect.selectedIndex].value;
 
         console.log({editor, uid, content, language});
 

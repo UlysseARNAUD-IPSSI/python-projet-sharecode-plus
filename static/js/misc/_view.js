@@ -8,7 +8,7 @@ function view(url) {
         callback: function () {
 
             if ('/' === url) {
-                loadHomeScript();
+                initializesPage();
             }
 
         }

@@ -7,6 +7,7 @@ Importation des modules
 from flask import Flask, request, render_template, \
     redirect, jsonify
 
+from Code import Code
 from model_sqlite import createTables, \
     createCode, \
     getCode, \
@@ -22,13 +23,13 @@ Initialisation
 app = Flask(__name__)
 createTables()
 
-languages = [
-    'text',
-    'python',
-    'html',
-    'css',
-    'javascript'
-]
+languages = {
+    'Texte': 'text',
+    'Python': 'text/x-python',
+    'HTML': 'text/html',
+    'CSS': 'text/css',
+    'Javascript': 'text/javascript'
+}
 
 
 
@@ -49,7 +50,7 @@ Création d'un code
 @app.route('/create')
 def create():
     uid = createCode() # Créer la ligne
-    return redirect("{}edit/{}".format(request.host_url,uid)) # Ne fait pas de redirection mais affiche la page
+    return redirect(f'{request.host_url}edit/{uid}')
 
 
 """
@@ -72,14 +73,14 @@ Publication d'un code
 
 @app.route('/publish', methods=['POST'])
 def publish():
-    content = request.form.get('content')
-    uid = request.form.get('uid')
-    language = request.form.get('language')
-
-    # code = Code(uid=uid, content=content, language=language)
+    content = request.form['content']
+    uid = request.form['uid']
+    language = request.form['language']
 
     updateCode(uid, content, language)
-    return jsonify({'ok': True})
+    result = getCode(uid)
+
+    return jsonify({'ok': True, 'code' : result })
 
 """
 Affichage d'un code
@@ -103,7 +104,8 @@ Administration
 
 @app.route('/admin/')
 def admin():
-    pass
+    d = dict(editions=getEdition())
+    return render_template('admin.html', **d)
 
 
 """
@@ -112,7 +114,7 @@ Vue partielle : Derniers codes modifiées
 
 @app.route('/_partials/last-added')
 def partialsLastAdded():
-    d = {'last_added': getAllCode()}
+    d = {'last_added': getAllCode(), 'languages': languages}
     return render_template('/partials/last-added.html', **d)
 
 
