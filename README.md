@@ -87,7 +87,9 @@ publiés et ces informations concernant la dernière modification.
 
 Une table `logs` a été créée dont les valeurs contenues sont `uid`, `address_ip` et `user_agent`.
 
-Les valeurs `updated_at` et `created_at` sont utilisées dans les tables afin d'avoir la possibilité de loguer les entrées de la base de données.s
+Les valeurs `updated_at` et `created_at` sont utilisées dans les tables afin d'avoir la possibilité de loguer les entrées de la base de données.
+
+L'affichage ne fonctionne pas mais on peut s'attendre à recevoir les valeurs sur la page http://localhost:5000/admin.
 
 ## Partie 4 : colorisation de code
 
