@@ -48,7 +48,7 @@ function loadEditScript() {
     const {uid} = codeSection.dataset;
     languagesSelect.addEventListener('change', function changeLanguage(event) {
         const language = event.target.value;
-        // modifierLangageDansEditor(uid, language);
+        modifierLangageDansEditor(uid, language);
         const saveButton = document.querySelector('.toolbar a:first-child');
         saveButton.click();
         //window.location.reload(true);
