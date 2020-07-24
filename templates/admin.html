@@ -3,12 +3,12 @@
 
 <h2>Dashboard</h2>
 
-<ul>
-    {% if data %}
-        {% for row in data %}
-            <li>{{ row[0] }} | {{ row[1] }} | {{ row[2] }}| {{ row[3] }}</li>
+{% if data %}
+    <ul>
+        {% for row in data.items() %}
+            <li>{{ row }}</li>
         {% endfor %}
-    {% endif %}
-</ul>
+    </ul>
+{% endif %}
 
 {% include 'layouts/footer.html' %}

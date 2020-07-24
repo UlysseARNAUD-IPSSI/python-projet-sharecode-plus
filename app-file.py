@@ -75,7 +75,7 @@ def publish():
     code = Code(uid=uid, content=content, language=language)
     save_doc_as_file(code)
 
-    return jsonify({'ok': True, 'code' : code })
+    return jsonify({'ok': True })
 
 """
 Affichage d'un code
