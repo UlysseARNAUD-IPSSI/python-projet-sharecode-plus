@@ -1,6 +1,6 @@
 {% include 'layouts/header.html' %}
 
-        <section id="code" data-uid="{{ uid }}">
+        <section id="code" data-uid="{{ uid }}" data-language="{{ code[0] or code['language'] }}">
 
             <nav class="toolbar">
                 <a data-mode="edit" data-id="{{ uid }}" onclick="viewActivity(this)">Edit</a></br>
@@ -9,7 +9,7 @@
                 </div>
             </nav>
 
-            <div class="code-editor" data-language="{{ code[0] or code['language'] }}">
+            <div class="code-editor">
                 <textarea name="content" rows=20 cols=100>{{ code[1] or code['content'] }}</textarea>
             </div>
 

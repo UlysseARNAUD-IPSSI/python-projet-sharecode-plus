@@ -8,7 +8,7 @@ function modifierLangageDansEditor(uid, language) {
         if (uid === editor.uid) {
             window.editors[cursor].language = language;
             const mode = CodeMirror.findModeByName(language);
-            console.log({mode});
+            console.log({language, mode});
             let mime = 'text/plain';
             if (mode.mimes) mime = mode.mimes[0];
             else mime = mode.mime;

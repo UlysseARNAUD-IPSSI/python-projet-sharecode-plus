@@ -48,7 +48,7 @@ function loadEditScript() {
     const {uid} = codeSection.dataset;
     languagesSelect.addEventListener('change', function changeLanguage(event) {
         const language = event.target.value;
-        modifierLangageDansEditor(uid, language);
+        // modifierLangageDansEditor(uid, language);
         const saveButton = document.querySelector('.toolbar a:first-child');
         saveButton.click();
         //window.location.reload(true);
@@ -61,10 +61,9 @@ function loadEditScript() {
 
 function loadViewScript() {
     const codeSection = document.querySelector('section#code');
-    const {uid} = codeSection.dataset;
-    const editor = obtenirEditor(uid);
-    console.log({editor});
-    modifierLangageDansEditor(uid, editor.language);
+    const {uid, language} = codeSection.dataset;
+    console.log({language});
+    modifierLangageDansEditor(uid, language);
 }
 
 function initializesPage() {
