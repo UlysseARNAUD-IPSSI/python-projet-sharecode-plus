@@ -1,5 +1,8 @@
 import sqlite3
 
+from Code import Code
+
+
 def createTables():
     connection = sqlite3.connect('database/sharecode-plus.db')
     cursor = connection.cursor()
@@ -24,6 +27,7 @@ def createCode():
         INSERT INTO codes DEFAULT VALUES
     ''')
 
+
     uid = cursor.lastrowid
 
     connection.commit()
@@ -45,6 +49,8 @@ def getCode(uid):
     ''', uid)
 
     result = c.fetchone()
+
+    print(result)
 
     conn.commit()
     conn.close()
