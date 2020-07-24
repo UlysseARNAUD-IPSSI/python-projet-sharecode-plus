@@ -41,10 +41,14 @@ fichier qui reprend l'id du code avec l'extension .lang (par example
 si le code est dans `data/wMdWMbwAQ` on pourra trouver "Python" dans
 `data/wMdWMbwAQ.lang`
 
-
 Pour cette partie, l'objet code est sérialisé (transformer en chaîne de caractères) dans un fichier dont le nom correspond à son identifiant.
 
 La classe Code a comme variables d'instance `uid`, `content`, et `language`.
+
+Si des soucis sont encourrus sur la branche `master`, vous pouvez utiliser la branche `partie1` via la commande suivante :
+```bash
+git checkout partie1
+```
 
 ## Partie 2 : Changez le procédé de stockage, plus de fichiers mais un SGBDR
 

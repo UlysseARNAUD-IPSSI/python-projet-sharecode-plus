@@ -9,8 +9,8 @@
                 </div>
             </nav>
 
-            <div class="code-editor" data-language="{{ code[0] }}">
-                <textarea name="content" rows=20 cols=100>{{ code[1] }}</textarea>
+            <div class="code-editor" data-language="{{ code[0] or code['language'] }}">
+                <textarea name="content" rows=20 cols=100>{{ code[1] or code['content'] }}</textarea>
             </div>
 
         </section>
