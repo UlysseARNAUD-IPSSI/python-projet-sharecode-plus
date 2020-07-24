@@ -104,6 +104,8 @@ Pygments n'a pas été pris en compte. A la place, une librairie JS a été util
 
 Je n'ai pas réussi à implémenter la coloritation syntaxique (malgré un début de système dont on récupère le mime en fonction du langage), cependant en utilisant la librarie CodeMirror, nous pouvons ajouté des addons comme la recherche de mot (comme dans un ide) dans l'éditeur de code.
 
+**EDIT : Vendredi 24 juillet à 18h : La coloritation syntaxique fonctionne et un nombre conséquent de langages sont disponibles dans la selection des langages.**
+
 ## Partie optionnelle
 
 Enoncé :
