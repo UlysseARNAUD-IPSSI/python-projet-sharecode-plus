@@ -7,7 +7,7 @@
         <a onclick="saveAndViewCode(this)">Save & View</a>
         <div>
             <select name="language" id="language">
-                {% for language, value in languages.items() %}
+                {% for language in (languages | sort) %}
                     <option value="{{ language }}" {% if language == (code[0] or code['language']) %}selected{% endif %}>{{ language }}</option>
                 {% endfor %}
             </select>
@@ -15,7 +15,6 @@
     </nav>
 
     <div class="code-editor">
-        <input type="hidden" name="mimes" value="{{ languages }}">
         <textarea name="content" rows=20 cols=100>{{ code[1]  or code['content'] }}</textarea>
     </div>
 

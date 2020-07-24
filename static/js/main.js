@@ -5,6 +5,7 @@ import view from './misc/_view.js';
 import viewActivity from './misc/_view-activity.js';
 import initializesCodeEditors from './misc/_initializesCodeEditors.js';
 import modifierLangageDansEditor from "./misc/_modifierLangageDansEditor.js";
+import obtenirEditor from "./misc/_obtenirEditor.js";
 
 
 /*
@@ -43,23 +44,34 @@ function loadHomeScript() {
 
 function loadEditScript() {
     const languagesSelect = document.querySelector('select#language');
+    const codeSection = languagesSelect.closest('section#code');
+    const {uid} = codeSection.dataset;
     languagesSelect.addEventListener('change', function changeLanguage(event) {
         const language = event.target.value;
-        const codeSection = languagesSelect.closest('section#code');
-        const {uid} = codeSection.dataset;
         modifierLangageDansEditor(uid, language);
         const saveButton = document.querySelector('.toolbar a:first-child');
         saveButton.click();
         //window.location.reload(true);
-        languagesSelect.querySelector('option[selected]').removeAttribute('selected');
+        const currentSelected = languagesSelect.querySelector('option[selected]');
+        if (currentSelected) currentSelected.removeAttribute('selected');
         languagesSelect.options[languagesSelect.selectedIndex].setAttribute('selected', true);
     });
+    modifierLangageDansEditor(uid, languagesSelect.options[languagesSelect.selectedIndex].value);
+}
+
+function loadViewScript() {
+    const codeSection = document.querySelector('section#code');
+    const {uid} = codeSection.dataset;
+    const editor = obtenirEditor(uid);
+    console.log({editor});
+    modifierLangageDansEditor(uid, editor.language);
 }
 
 function initializesPage() {
     initializesCodeEditors();
     if ('/' === window.location.pathname) loadHomeScript();
     if (/^\/edit\//.test(window.location.pathname)) loadEditScript();
+    if (/^\/view\//.test(window.location.pathname)) loadViewScript();
 }
 
 window.initializesPage = initializesPage;

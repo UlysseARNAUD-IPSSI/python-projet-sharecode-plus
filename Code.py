@@ -19,7 +19,7 @@ class Code:
     def __init__(self, uid=None, content=None, language=None):
         self.uid = uid or create_uid()
         self.content = content or '# Write your code here...'
-        self.language = language or 'Text'
+        self.language = language or 'Plain text'
 
     def values(self):
         return dict(self.__dict__)

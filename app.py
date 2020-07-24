@@ -24,28 +24,122 @@ app = Flask(__name__)
 createTables()
 
 languages = {
-    'Text': 'text',
-    'Python': 'text/x-python',
-    'HTML': 'text/html',
-    'CSS': 'text/css',
-    'Javascript': 'text/javascript'
+    'APL',
+    'PGP',
+    'Asn.1',
+    'Brainfuck',
+    'Clike',
+    'Clojure',
+    'CMake',
+    'Cobol',
+    'Coffeescript',
+    'Commonlisp',
+    'Crystal',
+    'CSS',
+    'Cypher',
+    'D',
+    'Dart',
+    'Diff',
+    'Django',
+    'Dockerfile',
+    'DTD',
+    'Dylan',
+    'EBNF',
+    'ECL',
+    'Eiffel',
+    'Elm',
+    'Elm',
+    'Erlang',
+    'Factor',
+    'FCL',
+    'Forth',
+    'Fortran',
+    'Gas',
+    'GFM',
+    'Gherkin',
+    'Go',
+    'Groovy',
+    'HAML',
+    'Handlebars',
+    'Haskell',
+    'Haxe',
+    'HTML',
+    'HTTP',
+    'IDL',
+    'Javascript',
+    'Jinja2',
+    'Julia',
+    'Livescript',
+    'Lua',
+    'Markdown',
+    'Mathematica',
+    'Modelica',
+    'Nginx',
+    'NSIS',
+    'Octave',
+    'Oz',
+    'Pascal',
+    'Perl',
+    'PHP',
+    'Pig',
+    'Powershell',
+    'Properties',
+    'Protobuf',
+    'Pug',
+    'Puppet',
+    'Plain text',
+    'Python',
+    'Q',
+    'R',
+    'RPM',
+    'Ruby',
+    'Rust',
+    'SAS',
+    'SASS',
+    'Scheme',
+    'Shell',
+    'Sieve',
+    'Slim',
+    'Smalltalk',
+    'Smarty',
+    'Spreadsheet',
+    'SQL',
+    'Stylus',
+    'Swift',
+    'TCL',
+    'Textile',
+    'Tiddlywiki',
+    'Tiki',
+    'TOML',
+    'Tornado',
+    'Turtle',
+    'Twig',
+    'VB',
+    'VBScript',
+    'Velocity',
+    'Verilog',
+    'VHDL',
+    'Vue',
+    'XML',
+    'YAML',
+    'Yacas',
+    'Z80'
 }
-
-
 
 """
 Page d'accueil
 """
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-
 """
 Création d'un code
 """
+
 
 @app.route('/create')
 def create():
@@ -57,6 +151,7 @@ def create():
 """
 Modification d'un code
 """
+
 
 @app.route('/edit/<string:uid>/', methods=['GET'])
 def edit(uid):
@@ -72,6 +167,7 @@ def edit(uid):
 Publication d'un code
 """
 
+
 @app.route('/publish', methods=['POST'])
 def publish():
     content = request.form['content']
@@ -82,11 +178,13 @@ def publish():
     createLog(request.remote_addr, request.user_agent.string)
     result = getCode(uid)
 
-    return jsonify({'ok': True, 'code' : result })
+    return jsonify({'ok': True, 'code': result})
+
 
 """
 Affichage d'un code
 """
+
 
 @app.route('/view/<string:uid>/')
 def view(uid):
@@ -100,9 +198,11 @@ def view(uid):
 
     return render_template('view.html', **d)
 
+
 """
 Administration
 """
+
 
 @app.route('/admin/')
 def admin():
@@ -113,6 +213,7 @@ def admin():
 """
 Vue partielle : Derniers codes modifiées
 """
+
 
 @app.route('/_partials/last-added')
 def partialsLastAdded():
