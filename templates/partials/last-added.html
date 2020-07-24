@@ -7,9 +7,9 @@
         </hgroup>
         <section>
             {% for entry in last_added %}
-                <article data-id="{{ entry["uid"] }}" data-mode="edit" onclick="viewActivity(this)">
-                    <h3>{{ entry["uid"] }}</h3>
-                    {% if entry["language"] %} <small>{{ entry["language"] }}</small> {% endif %}
+                <article data-id="{{ entry[0] }}" data-mode="edit" onclick="viewActivity(this)">
+                    <h3>{{ entry[0] }}</h3>
+                    {% if entry[2] %} <small>{{ entry[2] }}</small> {% endif %}
                 </article>
             {% endfor %}
         </section>

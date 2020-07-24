@@ -42,8 +42,9 @@ def getCode(uid):
 
     c.execute('''
         SELECT
-            content,
-            language
+            uid,
+            language,
+            content
         FROM codes
         WHERE uid = ?
     ''', uid)

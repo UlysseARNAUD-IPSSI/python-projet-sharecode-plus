@@ -49,8 +49,7 @@ Création d'un code
 @app.route('/create')
 def create():
     uid = createCode() # Créer la ligne
-    print(uid) # Affiche le dernier uid
-    return redirect(f"{request.host_url}edit/{uid}") # Ne fait pas de redirection mais affiche la page
+    return redirect("{}edit/{}".format(request.host_url,uid)) # Ne fait pas de redirection mais affiche la page
 
 
 """
@@ -114,6 +113,7 @@ Vue partielle : Derniers codes modifiées
 @app.route('/_partials/last-added')
 def partialsLastAdded():
     d = {'last_added': getAllCode()}
+    print(str(d['last_added']))
     return render_template('/partials/last-added.html', **d)
 
 
