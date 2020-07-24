@@ -1,7 +1,7 @@
 
-CREATE TABLE IF NOT EXISTS `editions`(
+CREATE TABLE IF NOT EXISTS `logs`(
     `uid` VARCHAR PRIMARY KEY,
-    `ip` VARCHAR NOT NULL,
+    `address_ip` VARCHAR NOT NULL,
     `user_agent` VARCHAR NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP

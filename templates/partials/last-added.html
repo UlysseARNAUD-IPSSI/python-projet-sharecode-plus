@@ -1,19 +1,19 @@
 {% include 'layouts/header.html' %}
 
-{% if last_added %}
     <section id="last-added">
         <hgroup>
             <h2>Last added</h2>
         </hgroup>
         <section>
-            {% for entry in last_added %}
-                <article data-id="{{ entry[0] }}" data-mode="edit" onclick="viewActivity(this)">
-                    <h3>{{ entry[0] }}</h3>
-                    {% if entry[2] %} <small>{{ entry[2] }}</small> {% endif %}
-                </article>
-            {% endfor %}
+            {% if last_added %}
+                {% for entry in last_added %}
+                    <article data-id="{{ entry[0] }}" data-mode="edit" onclick="viewActivity(this)">
+                        <h3>{{ entry[0] }}</h3>
+                        {% if entry[2] %} <small>{{ entry[2] }}</small> {% endif %}
+                    </article>
+                {% endfor %}
+            {% endif %}
         </section>
     </section>
-{% endif %}
 
 {% include 'layouts/footer.html' %}

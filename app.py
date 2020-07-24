@@ -13,8 +13,8 @@ from model_sqlite import createTables, \
     getCode, \
     getAllCode, \
     updateCode, \
-    createEdition, \
-    getEdition
+    createLog, \
+    getLog
 
 """
 Initialisation
@@ -24,7 +24,7 @@ app = Flask(__name__)
 createTables()
 
 languages = {
-    'Texte': 'text',
+    'Text': 'text',
     'Python': 'text/x-python',
     'HTML': 'text/html',
     'CSS': 'text/css',
@@ -49,7 +49,8 @@ Création d'un code
 
 @app.route('/create')
 def create():
-    uid = createCode() # Créer la ligne
+    uid = createCode()
+    createLog(request.remote_addr, request.user_agent.string)
     return redirect(f'{request.host_url}edit/{uid}')
 
 
@@ -78,6 +79,7 @@ def publish():
     language = request.form['language']
 
     updateCode(uid, content, language)
+    createLog(request.remote_addr, request.user_agent.string)
     result = getCode(uid)
 
     return jsonify({'ok': True, 'code' : result })
@@ -104,7 +106,7 @@ Administration
 
 @app.route('/admin/')
 def admin():
-    d = dict(editions=getEdition())
+    d = dict(editions=getLog())
     return render_template('admin.html', **d)
 
 

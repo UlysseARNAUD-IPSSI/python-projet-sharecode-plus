@@ -81,7 +81,7 @@ date et heure de dernière modification.
 publiés et ces informations concernant la dernière modification.
 
 
-Une table `editions` a été créée dont les valeurs contenues sont `uid`, `ip` et `user_agent`.
+Une table `logs` a été créée dont les valeurs contenues sont `uid`, `address_ip` et `user_agent`.
 
 Les valeurs `updated_at` et `created_at` sont utilisées dans les tables afin d'avoir la possibilité de loguer les entrées de la base de données.s
 

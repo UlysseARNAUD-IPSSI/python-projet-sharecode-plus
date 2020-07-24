@@ -7,7 +7,8 @@ function view(url) {
         urlChange: true,
         callback: function () {
 
-            if ('/' === url) {
+            // Si ce n'est pas une vue partielle, alors on initialise la page
+            if ('!/^\/_partials\//.test(url)') {
                 initializesPage();
             }
 

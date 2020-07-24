@@ -13,7 +13,7 @@ def createTables():
 
     connection.commit()
 
-    with open('database/migrations/create_editions_table.sql') as file:
+    with open('database/migrations/create_logs_table.sql') as file:
         cursor.executescript(file.read())
 
     connection.commit()
@@ -98,18 +98,16 @@ def updateCode(uid, content, language):
     return result
 
 
-def createEdition(ip, user_agent):
+def createLog(ip, user_agent):
     conn = sqlite3.connect('database/sharecode-plus.db')
     c = conn.cursor()
 
     uid = create_uid()
 
     c.execute('''
-        INSERT INTO editions (uid, ip, user_agent)
+        INSERT INTO logs (uid, address_ip, user_agent)
         VALUES(?,?,?)
     ''', [uid, ip, user_agent])
-
-    uid = c.lastrowid
 
     conn.commit()
     conn.close()
@@ -117,14 +115,14 @@ def createEdition(ip, user_agent):
     return uid
 
 
-def getEdition():
+def getLog():
     conn = sqlite3.connect('database/sharecode-plus.db')
     c = conn.cursor()
 
     result = c.execute('''
-        SELECT ip, user_agent, date
-        FROM editions
-        ORDER BY date DESC
+        SELECT address_ip, user_agent, created_at
+        FROM logs
+        ORDER BY created_at DESC
     ''')
 
     conn.commit()

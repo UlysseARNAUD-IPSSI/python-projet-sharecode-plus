@@ -7,11 +7,10 @@ function initializesCodeEditors() {
 
     let languages = document.querySelector('input[name="mimes"]');
 
-    if (!languages) { // SI language vaut null ou undefined (en résumé: une valeur négative)
-        return;
+    if (languages) { // SI language ne vaut pas null ou undefined (en résumé: une valeur positive)
+        languages.value = languages.value.replace(/'/g, '"');
+        languages = JSON.parse(languages.value);
     }
-    languages.value = languages.value.replace(/'/g, '"');
-    languages = JSON.parse(languages.value);
 
 
     for (
@@ -21,8 +20,13 @@ function initializesCodeEditors() {
     ) {
         const element = elements[cursor];
         const codeSection = element.closest('section#code');
+
         const languagesSelect = codeSection.querySelector('select#language');
-        const language = languagesSelect.options[languagesSelect.selectedIndex].value;
+        let language;
+        if (languagesSelect) {
+            language = languagesSelect.options[languagesSelect.selectedIndex].value;
+        }
+
         let {uid} = codeSection.dataset;
 
         /*if (undefined === language) {
@@ -31,18 +35,19 @@ function initializesCodeEditors() {
             language = defaultLanguage;
         }*/
 
-        console.log({uid, language})
-
         const editor = CodeMirror.fromTextArea(element, {
             lineNumbers: true,
-            mode: languages[language],
+            mode: language ? languages[language] : 'text',
             theme: 'dracula'
         });
 
         if (true === contientEditor(uid)) {
             enleverEditor(uid);
         }
-        editors.push({uid, editor, language});
+
+        let _editor = {uid, editor};
+        if (language) _editor = {..._editor, language}
+        editors.push(_editor);
 
     }
 
