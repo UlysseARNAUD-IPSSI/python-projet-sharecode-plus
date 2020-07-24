@@ -16,3 +16,7 @@ header > aside#logo{
 header > nav {
     padding: 0 1rem;
 }
+
+header > nav > a {
+    user-select: none;
+}

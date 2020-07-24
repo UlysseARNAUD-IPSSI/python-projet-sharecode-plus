@@ -113,7 +113,6 @@ Vue partielle : Derniers codes modifiées
 @app.route('/_partials/last-added')
 def partialsLastAdded():
     d = {'last_added': getAllCode()}
-    print(str(d['last_added']))
     return render_template('/partials/last-added.html', **d)
 
 
