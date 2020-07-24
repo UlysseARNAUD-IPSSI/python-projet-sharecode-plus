@@ -37,7 +37,7 @@ function initializesCodeEditors() {
 
         const editor = CodeMirror.fromTextArea(element, {
             lineNumbers: true,
-            mode: language ? languages[language] : 'text',
+            mode: CodeMirror.findModeByName(language ? language : 'text'),
             theme: 'dracula'
         });
 

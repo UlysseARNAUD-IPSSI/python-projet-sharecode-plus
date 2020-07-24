@@ -50,9 +50,9 @@ function loadEditScript() {
         modifierLangageDansEditor(uid, language);
         const saveButton = document.querySelector('.toolbar a:first-child');
         saveButton.click();
-        window.location.reload(true);
-        /*languagesSelect.querySelector('option[selected]').removeAttribute('selected');
-        languagesSelect.options[languagesSelect.selectedIndex].setAttribute('selected', true);*/
+        //window.location.reload(true);
+        languagesSelect.querySelector('option[selected]').removeAttribute('selected');
+        languagesSelect.options[languagesSelect.selectedIndex].setAttribute('selected', true);
     });
 }
 
